@@ -1,0 +1,43 @@
+﻿@model MillsteinLocal.Models.CEOModel
+@{
+    ViewBag.Title = "Ceo";
+    Layout = "~/Views/Shared/_Secomdary_Layout.cshtml";
+
+    ViewBag.FirmActive = "menu_top_border";
+}
+
+
+
+
+
+                    <div class="row firm_title">
+                        <div class="col-sm-6 col-xs-12 logo">
+                            <a href="~/home"><img src="~/Images/logo-all.png" /></a>
+                        </div>
+                        <div class="col-sm-6 col-xs-12 firm_sidebar">
+                            <ul class="list-inline firm_sidebar_ul">
+                                <li><a href="#">ceo</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row firm_title firm_content">
+                        <div class="col-sm-6 col-xs-12 firm_image">
+                            <h2 class="visible-xs ceo_name">@Model.CEODetail.FirstName @Model.CEODetail.LastName</h2>
+                            <div class="visible-xs ceo_name_description">@Model.CEODetail.Title</div>
+                            <img src="~/Images/jim_Millstein.jpg" />
+
+                            <div class="image_desc image_desc_ceo">
+                                <p>@Html.Raw(@Model.CEODetail.pictureQuote)</p>
+                                <span class="pull-right">@Html.Raw(@Model.CEODetail.pictureQuoteSource), @String.Format("{0:MM/dd/yyyy}", @Model.CEODetail.PictureQuoteDate)</span>
+                            </div>
+                            <div class="ceo_company">
+                                @Html.Raw(@Model.CEODetail.Description)
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-12 ceo_content_descriprion">
+                            <h2 class="visible-lg visible-md visible-sm ceo_name">@Model.CEODetail.FirstName @Model.CEODetail.LastName</h2>
+                            <div class="visible-lg visible-md visible-sm ceo_name_description">@Model.CEODetail.Title</div>
+                            @Html.Raw(@Model.CEODetail.Content)
+                        </div>
+                    </div>
+

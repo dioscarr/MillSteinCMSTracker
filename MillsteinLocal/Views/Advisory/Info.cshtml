@@ -1,0 +1,40 @@
+﻿@model MillsteinLocal.Models.TeamModel
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_Secomdary_Layout.cshtml";
+
+    ViewBag.AdvisoryActive = "menu_top_border";
+}
+
+<div id="returndata">
+    @Html.Partial("LoadTeamMember")
+</div>
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function () {
+            
+            $('.members').click( function (event) {
+                var myid = $(this).attr("id");
+            $.ajax({
+                type:"Get",
+                url: "/advisory/LoadTeamMember/" + $(this).attr("id"),
+                success: function (data) {
+                    //$('#returndata').html(data);
+                    window.location.href = "/advisory/info/" + myid;
+
+                }   
+            });
+            event.preventDefault();
+
+            });
+        });
+        //button slideToggle
+        $(document).ready(function () {
+            $(".advisory_button").click(function () {
+                $(".mobile_left_bar_advisory").slideToggle("slow");
+            });
+        });
+    </script>
+}

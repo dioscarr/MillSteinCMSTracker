@@ -1,0 +1,118 @@
+﻿@model MillsteinLocal.Areas.Admin.Models.ContactModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Secomdary_Layout.cshtml";
+
+    ViewBag.ContactActive = "menu_top_border";
+    ViewBag.Firmfooter = "on";
+}
+@using (Html.BeginForm())
+{
+    
+    @Html.HiddenFor(model=>model.ContactDetail.Id)
+    @Html.HiddenFor(model => model.ContactDetail.isDeleted)
+    @Html.HiddenFor(model => model.ContactDetail.Created)
+    
+
+    <div class="row outer-Box" style=" margin-top:20px;">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading"> Advisory</div>
+                <div class="panel-body">
+                    <div class="form-group">
+
+                        <div class="row firm_title">
+                            <div class="col-sm-9 col-xs-12 logo">
+                                <a href="~/home"><img src="~/Images/logo-all.png" /></a>
+                            </div>
+                            <div class="col-sm-3 col-xs-12 firm_sidebar">
+                                <ul class="list-inline firm_sidebar_ul">
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="visible-lg visible-md visible-sm row contact_content">
+                            <div class="col-xs-9 contact_company_main_block">
+                                <img class="contact_company_image" src="~/Images/contact.jpg" />
+                                <div class="contact_information">
+                                    <h3>Content Header</h3>
+                                    <h3>
+                                        @Html.EditorFor(model => model.ContactDetail.ContentHeader, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+                                    </h3>
+                                    <span>
+                                        <h3>First Name</h3>
+                                        @Html.EditorFor(model => model.ContactDetail.FirstName, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+                                        <h3>Last Name</h3>
+                                        @Html.EditorFor(model => model.ContactDetail.LastName, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+
+                                    </span><br />
+                                    <h3>Email</h3>
+                                    <span>
+                                        @Html.EditorFor(model => model.ContactDetail.Email, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+                                    </span><br />
+                                    <h3>Tel</h3>
+                                    <span>
+                                        @Html.EditorFor(model => model.ContactDetail.Tel, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+                                    </span><br /><br />
+                                    <h3>Career Email</h3>
+                                    <h3>
+                                        @Html.EditorFor(model => model.ContactDetail.CareersEmail, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+                                    </h3>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <ul class="left_bar_advisory">
+                                    <li><a href="~/Contact/NyCity/@Model.Locations[0].Id">@Model.Locations[0].LocationName</a></li>
+                                    <li><a href="~/Contact/WashingtonDCCity/@Model.Locations[1].Id">@Model.Locations[1].LocationName</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-default">Update</button>
+                            </div>
+                        </div>
+
+                        @*<div class="visible-xs row contact_content">
+                                <div class="col-xs-12">
+                                    <button class="btn btn-default advisory_button">View all Contact</button>
+                                    <ul class="left_bar_advisory mobile_left_bar_advisory">
+                                        <li><a href="~/Contact">Contact</a></li>
+                                        <li><a href="~/Contact/NyCity/@Model.Locations[0].Id">@Model.Locations[0].LocationName</a></li>
+                                        <li><a href="~/Contact/WashingtonDCCity/@Model.Locations[1].Id">@Model.Locations[1].LocationName</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-12 contact_company_main_block">
+                                    <img class="contact_company_image" src="~/Images/contact.jpg" />
+                                    <div class="contact_information">
+                                        <h3>@Model.ContactDetail.ContentHeader</h3>
+                                        <span>@Model.ContactDetail.FirstName @Model.ContactDetail.LastName Main</span><br />
+                                        <span><a class="news_archive_link" href="#">@Model.ContactDetail.Email</a></span><br />
+                                        <span>@Model.ContactDetail.Tel</span><br /><br />
+                                        <h3>@Model.ContactDetail.CareersHeader</h3>
+                                        <span><a class="news_archive_link" href="#">@Model.ContactDetail.CareersEmail</a></span>
+                                    </div>
+                                </div>
+                            </div>*@
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+}
+
+                        @section scripts{
+                            <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+                            <script type="text/javascript">
+                                $(document).ready(function () {
+                                    $(".advisory_button").click(function () {
+                                        $(".mobile_left_bar_advisory").slideToggle("slow");
+                                    });
+                                });
+                            </script>
+                        }

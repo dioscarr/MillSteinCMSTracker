@@ -1,0 +1,119 @@
+@model MillsteinLocal.Models.InvestmentModel
+@{
+    ViewBag.Title = "Asset Management";
+    Layout = "~/Views/Shared/_Secomdary_Layout.cshtml";
+
+    ViewBag.InvestmentActive = "menu_top_border";
+    ViewBag.Firmfooter = "on";
+}
+
+<div class="row firm_title">
+    <div class="col-md-9 col-sm-8 col-xs-12 logo">
+        <a href="~/home"><img src="~/Images/logo-all.png" /></a>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-12 firm_sidebar">
+        <ul class="list-inline firm_sidebar_ul">
+            <li><a href="#">Asset Management</a></li>
+        </ul>
+    </div>
+</div>
+@* All Devices  *@
+<div class="visible-lg visible-md visible-sm row firm_content inv_content">
+    <div class="col-md-9 col-sm-8 inv_content_descriprion">
+        <div class="inv_company_desc adv_content">
+            <i>
+                @Model.InvestmentDetail.HeaderContent
+            </i>
+        </div>
+        <br />
+        <img src="~/Images/asset-mgmt.jpg" />
+        <h4 class="investment_title">@Model.InvestmentDetail.ContentTitle1</h4>
+        @Html.Raw(@Model.InvestmentDetail.Content1) 
+        <h4 class="investment_title">@Model.InvestmentDetail.ContentTitle2</h4>
+        @Html.Raw(@Model.InvestmentDetail.Content2)
+    </div>
+    <div class="col-md-3 col-sm-4 firm_image">
+        @*<img src="~/Images/investment.jpg" />*@
+        @*<div class="image_desc image_desc_inv">
+            <p><i>@Model.InvestmentDetail.PictureContent</i></p>
+        </div>*@
+        
+        <ul class="left_bar_advisory">
+            <li><a href="~/JimMillstein/">Jim Millstein</a></li>
+
+
+            @foreach (var management in @Model.teamList)
+            {
+                @* <li><a href="~/investment/MenegInfo/@management.Id">@management.FirstName @management.LastName</a></li> *@
+                <li class="left_bar_advisory_li">@management.FirstName @management.LastName</li>
+            }
+            @*<li><a href="~/investment/MenegInfo/5">Michael Duran, Partner</a></li>
+            <li><a href="~/investment/MenegInfo">Adam LaVier, Partner</a></li>
+            <li><a href="~/investment/MenegInfo">William Nix, Partner</a></li>*@
+            <hr />
+            <li><b>Recent Disclosed Investments</b></li>
+            <br />
+            <li><a href="https://www.atlantixglobal.com">Atlantix Global Systems</a></li>
+            <li><a href="https://www.dlt.com">DLT Solutions</a></li>
+            <li><a href="https://www.ridewithvia.com">Via Transportation</a></li>
+            <li><a href="https://www.friendmts.com">Friend Media Technology Systems</a></li>
+        </ul>
+    </div>
+</div> 
+@* Mobile Devices  *@
+<div class="visible-xs row firm_content inv_content">
+    <div class="col-sm-3 col-xs-12 firm_image">
+        <div class="show_buttom_advisory visible-xs visible-sm">
+            <button class="btn btn-default advisory_button">View all Managers</button>
+            <ul class="left_bar_advisory mobile_left_bar_advisory">
+                <li><a href="~/JimMillstein/">Jim Millstein</a></li>
+
+                @foreach (var management in @Model.teamList)
+                {
+                    @* <li><a href="~/investment/MenegInfo/@management.Id">@management.FirstName @management.LastName</a></li> *@
+                    <li>@management.FirstName @management.LastName</li>
+                }
+
+                @*<li><a href="~/investment/MenegInfo">Michael Duran, Partner</a></li>
+                <li><a href="~/investment/MenegInfo">Adam LaVier, Partner</a></li>
+                <li><a href="~/investment/MenegInfo">William Nix, Partner</a></li>*@
+                <hr />
+                <li><b>Recent Disclosed Investments</b></li>
+                <br />
+                <li><a href="https://www.atlantixglobal.com">Atlantix Global Systems</a></li>
+                <li><a href="https://www.dlt.com">DLT Solutions</a></li>
+                <li><a href="https://www.ridewithvia.com">Via Transportation</a></li>
+                <li><a href="https://www.friendmts.com">Friend Media Technology Systems</a></li>
+            </ul>
+        </div>
+        <img src="~/Images/investment-mobile.jpg" />
+        @*<div class="image_desc image_desc_inv">
+            <p><i>@Model.InvestmentDetail.PictureContent</i></p>
+        </div>*@
+    </div>
+    <div class="col-sm-9 col-xs-12 inv_content_descriprion">
+        <div class="inv_company_desc adv_content">
+            <i>
+                @Model.InvestmentDetail.HeaderContent
+            </i>
+        </div>
+        <h4 class="investment_title">@Model.InvestmentDetail.ContentTitle1</h4>
+        @Html.Raw(@Model.InvestmentDetail.Content1)
+        <h4 class="investment_title">@Model.InvestmentDetail.ContentTitle2</h4>
+        @Html.Raw(@Model.InvestmentDetail.Content2)
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".advisory_button").click(function () {
+                $(".mobile_left_bar_advisory").slideToggle("slow");
+            });
+        });
+    </script>
+}
+
+

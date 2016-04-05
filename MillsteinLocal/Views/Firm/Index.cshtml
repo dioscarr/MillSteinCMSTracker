@@ -1,0 +1,51 @@
+﻿@model MillsteinLocal.Models.FirmModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Secomdary_Layout.cshtml";
+    ViewBag.activefirmindex = "active";
+
+    ViewBag.FirmActive = "menu_top_border";
+    ViewBag.Firmfooter = "on";
+}
+ 
+
+
+    <div class="row firm_title">
+        <div class="col-sm-6 col-xs-12 logo">
+            <a href="~/home"><img src="~/Images/logo-all.png" /></a> 
+        </div>
+        <div class="col-sm-6 col-xs-12 firm_sidebar">
+            <ul class="list-inline firm_sidebar_ul">
+                <li><a href="#">Our firm</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row firm_content">
+        <div class="col-xs-6 visible-lg visible-md visible-sm firm_content_descriprion">
+            @Html.Raw(@Model.FirmDetail.Content)
+        </div>
+        <div class="col-xs-6 visible-lg visible-md visible-sm firm_image">
+            <img src="~/Images/firm-1.jpg" />
+            <div class="image_desc">
+                <p><i>@Html.Raw(@Model.FirmDetail.FirmQuote)</i></p>
+            </div>
+        </div>
+        @* Mobile Devices  *@
+        <div class="col-xs-12 visible-xs firm_image">
+            <img src="~/Images/firm-1.jpg" />
+            <div class="image_desc">
+                <p><i>@Html.Raw(@Model.FirmDetail.FirmQuote)</i></p>
+            </div>
+        </div>
+        <div class="col-xs-12 visible-xs firm_content_descriprion">
+            @Html.Raw(@Model.FirmDetail.Content)
+        </div>
+    </div>
+
+
+
+@*@section scripts{
+<script type="text/javascript">
+    $(".footer").addClass("footer_abs");
+</script>
+}*@

@@ -1,0 +1,140 @@
+﻿@model MillsteinLocal.Models.NewsModel
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_Secomdary_Layout.cshtml";
+
+    ViewBag.NewsActive = "menu_top_border";
+    ViewBag.Firmfooter = "on";
+}
+
+<div class="row firm_title">
+    <div class="col-sm-9 col-xs-12 logo">
+        <a href="~/home"><img src="~/Images/logo-all.png" /></a>
+    </div>
+    <div class="col-sm-3 col-xs-12 firm_sidebar">
+        <ul class="list-inline firm_sidebar_ul">
+            <li><a href="~/News/">News</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row visible-lg visible-md visible-sm cont_content">
+    <div class="col-xs-9 news_company_main_block">
+        <img class="news_company_image" src="~/Images/contact.jpg" />
+        <div class="news_title">
+            <h2>News</h2>
+        </div>
+        @if (@Model.NewsList != null)
+        {
+            <div class="news_detail">
+
+               @foreach (var news in @Model.NewsList)
+                {
+                    <h3><a href="~/News/Article/@news.NewsId">@String.Format("{0:MMMM dd, yyyy}", news.NewsDate)</a></h3>
+                    <span><a href="~/News/Article/@news.NewsId">@Html.Raw(@news.NewsTitle)</a></span><br /><br />
+
+                }
+
+            </div>
+        }
+    </div>
+    <div class="col-xs-3">
+        @if (@Model.NewsList != null)
+        {
+            <ul class="left_bar_advisory">
+                @if (@ViewBag.CurrentYear != null || ViewBag.Archive == "archive")
+                {
+                    <li><a class="" href="~/News/">News</a></li>
+                }
+                else
+                {
+                    <li><a class="adv_active" href="~/News/">News</a></li>
+                }
+              
+                @*<li><a href="~/News/">Press</a></li>*@
+                <li>
+
+            <a class="@ViewBag.Active" href="~/News/Index?archive=archive">
+                Archive
+                <ul class="news_archive">
+                    @if (@Model.Years!=null) {
+                    foreach (var year in @Model.Years)
+                    {
+                        if (@ViewBag.CurrentYear == @year)
+                        {
+                            <li><a class="adv_active" href="~/News/Index?archive=archive&&id=@year">@year</a></li>
+                            }
+                            else {
+                            <li><a href="~/News/Index?archive=archive&&id=@year">@year</a></li>
+                            }
+                        }
+                    }
+                </ul>
+            </a>
+</li> 
+            </ul>
+        }
+
+    </div>
+</div>
+<div class="visible-xs row cont_content">
+    <div class="col-xs-12">
+        <button class="btn btn-default advisory_button">View all News</button>
+        @if (@Model.NewsList != null)
+        {
+            <ul class="left_bar_advisory mobile_left_bar_advisory">
+                <li><a class="adv_active" href="~/news">Recent News</a></li>
+                <li><a href="~/Admin/AdminNews/">Press</a></li>
+                <li>
+
+                    <a href="~/News/Index?archive=archive">
+                        Archive
+                        <ul class="news_archive">
+@if (@Model.Years != null)
+{
+                            foreach (var year in @Model.Years)
+                            {
+                                <li><a href="~/News/Index?archive=archive&&id='@year'">@year</a></li>
+                            }
+}
+                        </ul>
+                    </a>
+                </li>
+            </ul>
+        }
+    </div>
+    <div class="col-xs-12 news_company_main_block">
+        <img class="news_company_image" src="~/Images/news.jpg" />
+        <div class="news_title">
+            <h2>Recent News</h2>
+        </div>
+        @if (@Model.NewsList != null)
+        {
+            <div class="news_detail">
+
+                @foreach (var news in @Model.NewsList)
+                {
+                    <h3><a href="~/News/Article/@news.NewsId">@String.Format("{0:MMMM dd, yyyy}", news.NewsDate)</a></h3>
+                    <span><a href="~/News/Article/@news.NewsId">@Html.Raw(@news.NewsTitle)</a></span><br /><br />
+
+                }
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".advisory_button").click(function () {
+                $(".mobile_left_bar_advisory").slideToggle("slow");
+            });
+        });
+    </script>
+}

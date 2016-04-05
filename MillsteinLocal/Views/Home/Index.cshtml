@@ -1,0 +1,243 @@
+﻿@model MillsteinLocal.Models.HomeModel
+@{
+    ViewBag.Title = "Home Page";
+    
+    ViewBag.HomeActive = "menu_top_border";
+}
+
+
+<section class="body-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 logo_home">
+                <a href="~/home"><img src="~/Images/logo.png" /></a>                
+            </div>
+        </div>
+    </div>
+    @*<div class="text_header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-6">
+                    <h2>
+                       @Html.Raw(@Model.SliderList[0].Quote)<br>
+                    </h2>
+                    <span class="pull-right">— @Html.Raw(@Model.SliderList[0].QuoteLocation)</span>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-content carousel-caption text_header_news">
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 right_border">
+                    <h2 class="news_content pull-left">
+                       @Html.Raw(@Model.Home.Content)  </h2>
+                </div>
+                <div class="col-xs-6">
+                    <div class="news_name news_name_home pull-left">
+                        <h1 class="pull-left">
+                            NEWS
+                        </h1>
+                    </div>
+                    @*<div class="news_date pull-left">
+                        <p>Jim MillsteinLocal Bio</p><br>
+                        <p>555 Madison Avenue New York, NY</p>
+                        <p>(212) 416-5814</p>
+                    </div>*@
+                    <div class="news_detail news_detail_home pull-right">
+                        @*<h3><a href="~/News/Article">sdgfsdf</a></h3>*@
+
+
+                        @foreach (var news in @Model.NewslIST)
+                        {
+                            <span><a href="~/News/Article/@news.NewsId">@news.NewsTitle</a></span><br /><br />
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-content carousel-caption">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 copyright">
+                    <span class="icon_copyright">© 2016 Millstein & Co., L.P. | <a href="~/About/TermsAndConditions">Terms and Conditions </a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="image_MilllsteinG1" style="height: 300px;">
+    </div>
+
+    <div class="visible-sm visible-xs">
+
+        @*<div class="row small_appeal">
+            <div class="col-xs-12">
+                <h2>
+                    @Model.SliderList[0].Quote<br>
+                </h2>
+                <span class="pull-right">— @Html.Raw(@Model.SliderList[0].QuoteLocation)</span>
+            </div>
+        </div>*@
+        <div class="row text_header_news">
+            <div class="col-sm-8 col-xs-12">
+                <h2 class="news_content pull-left">
+                    @Html.Raw(@Model.Home.Content)
+                  </h2>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <div class="news_name pull-left">
+                    <h1 class="pull-left">
+                        NEWS
+                    </h1>
+                </div>
+                <div class="news_detail pull-right">
+
+
+                    @foreach (var news in @Model.NewslIST)
+                    {
+                        <span><a href="~/News/Article/@news.NewsId">@news.NewsTitle</a></span><br /><br />
+                    }
+
+                </div>
+
+            </div>
+        </div>
+        <div class="row sm_copyright">
+            <span class="">© 2016 Millstein & Co., L.P. | </span>
+            <span class="term_condition"><a href="~/About/TermsAndConditions">Terms and Conditions</a></span>
+        </div>
+        @*<span class="sm_copyright">© 2015 MillsteinLocal & Co., L.P. | <a href="~/About/TermsAndConditions">Terms and Conditions </a> </span>*@
+    </div>
+
+
+</section>
+
+
+@section scripts{
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="~/Scripts/ie10-viewport-bug-workaround.js"></script>
+<script src="~/Scripts/jquery.backstretch.min.js"></script>
+
+<script type="text/javascript">
+
+      /* fix vertical when not overflow
+        call fullscreenFix() if .fullscreen content changes */
+        function fullscreenFix() {
+            var h = $('body').height();
+            // set .fullscreen height
+            if ($(".body-content").innerHeight() <= h) {
+              $(".body-content").addClass("not-overflow");
+        }
+  }
+  $(window).resize(fullscreenFix);
+  fullscreenFix();
+
+  /* resize background images */
+  function backgroundResize() {
+      var windowH = $(window).height();
+      $(".background").each(function (i) {
+        var path = $(this);
+                // variables
+                var contW = path.width();
+                var contH = path.height();
+                var imgW = path.attr("data-img-width");
+                var imgH = path.attr("data-img-height");
+                var ratio = imgW / imgH;
+                // overflowing difference
+                var diff = parseFloat(path.attr("data-diff"));
+                diff = diff ? diff : 0;
+                // remaining height to have fullscreen image only on parallax
+                var remainingH = 0;
+                if (path.hasClass("parallax")) {
+                      var maxH = contH > windowH ? contH : windowH;
+                      remainingH = windowH - contH;
+                }
+                // set img values depending on cont
+                imgH = contH + remainingH + diff;
+                imgW = imgH * ratio;
+                // fix when too large
+                if (contW > imgW) {
+                      imgW = contW;
+                      imgH = imgW / ratio;
+                }
+                //
+                path.data("resized-imgW", imgW);
+                path.data("resized-imgH", imgH);
+                path.css("background-size", imgW + "px " + imgH + "px");
+          });
+}
+$(window).resize(backgroundResize);
+$(window).focus(backgroundResize);
+backgroundResize();
+
+
+
+
+
+
+if (document.documentElement.clientWidth < 994) {
+    $("#image_MilllsteinG1").backstretch([
+    "/Images/home1.jpg"
+    , "/Images/home2.jpg"
+    , "/Images/home3.jpg"
+    , "/Images/home4.jpg"
+    , "/Images/home5.jpg"
+    ], { duration: 3000, fade: 750 });
+}
+else {
+    $.backstretch([
+    "/Images/home1.jpg"
+    , "/Images/home2.jpg"
+    , "/Images/home3.jpg"
+    , "/Images/home4.jpg"
+    , "/Images/home5.jpg"
+    ], { duration: 3000, fade: 750 }); 
+}
+
+$(window).resize(function () {
+    //setTimeout(function () {
+if (document.documentElement.clientWidth < 994) {
+    //if ( ($(window).width() < 994)  ){
+    console.log("test");
+
+    //location.reload();
+    //$("div.backstretch").css('display', "none");
+    //$("#image_MilllsteinG1").css('display', "clock");
+    $('.backstretch').remove();
+        $("#image_MilllsteinG1").backstretch([
+        "/Images/home1.jpg"
+    , "/Images/home2.jpg"
+    , "/Images/home3.jpg"
+    , "/Images/home4.jpg"
+    , "/Images/home5.jpg"
+        ], { duration: 3000, fade: 750 });
+    }
+else {
+    console.log("check");
+    //$("#image_MilllsteinG1").css('display', "none");
+    //$("div.backstretch").css('display', "clock");
+    $('.backstretch').remove();
+        $.backstretch([
+        "/Images/home1.jpg"
+    , "/Images/home2.jpg"
+    , "/Images/home3.jpg"
+    , "/Images/home4.jpg"
+    , "/Images/home5.jpg"
+        ], { duration: 3000, fade: 750 });
+}
+    //}, 500);
+
+});
+       
+</script>
+
+}

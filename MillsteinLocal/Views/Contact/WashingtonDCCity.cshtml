@@ -1,0 +1,57 @@
+﻿@model MillsteinLocal.Models.ContactModel
+@{
+    ViewBag.Title = "WashingtonDCCity";
+    Layout = "~/Views/Shared/_Secomdary_Layout.cshtml";
+
+    ViewBag.ContactActive = "menu_top_border";
+    ViewBag.Firmfooter = "on";
+}
+
+
+<div class="row firm_title">
+    <div class="col-sm-9 col-xs-12 logo">
+        <a href="~/home"><img src="~/Images/logo-all.png" /></a>
+    </div>
+    <div class="col-sm-3 col-xs-12 firm_sidebar">
+        <ul class="list-inline firm_sidebar_ul">
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+</div>
+@* All Devices  *@
+<div class="visible-lg visible-md visible-sm row contact_content">
+    <div class="col-xs-9">
+        <div class="contact_information">
+            <h3>@Model.location.City</h3>
+            <span>@Model.location.Address1</span><br />
+            <span>@Model.location.City, @Model.location.State @Model.location.ZipCode</span><br />
+            <span>@Model.location.Phone</span><br /><br />
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.071017129721!2d-77.04256088464956!3d38.89949127957042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7bb9bec2649%3A0x76560dcc1089667e!2s1717+Pennsylvania+Ave+NW%2C+Washington%2C+DC+20006!5e0!3m2!1sen!2sus!4v1450361874964" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+    <div class="col-xs-3">
+        <ul class="left_bar_advisory">
+            <li><a href="~/Contact/NyCity/@Model.Locations[0].Id">@Model.Locations[0].LocationName</a></li>
+            <li><a href="~/Contact/WashingtonDCCity/@Model.Locations[1].Id">@Model.Locations[1].LocationName</a></li>
+        </ul>
+    </div>
+</div>
+
+@* Mobile Devices  *@
+<div class="visible-xs row contact_content">
+    <div class="col-xs-12">
+        <ul class="left_bar_advisory">
+            <li><a href="~/Contact/NyCity/@Model.Locations[0].Id">@Model.Locations[0].LocationName</a></li>
+            <li><a href="~/Contact/WashingtonDCCity/@Model.Locations[1].Id">@Model.Locations[1].LocationName</a></li>
+        </ul>
+    </div>
+    <div class="col-xs-12">
+        <div class="contact_information">
+            <h3>@Model.location.City</h3>
+            <span>@Model.location.Address1</span><br />
+            <span>@Model.location.City, @Model.location.State @Model.location.ZipCode</span><br />
+            <span>@Model.location.Phone</span><br /><br />
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.071017129721!2d-77.04256088464956!3d38.89949127957042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7bb9bec2649%3A0x76560dcc1089667e!2s1717+Pennsylvania+Ave+NW%2C+Washington%2C+DC+20006!5e0!3m2!1sen!2sus!4v1450361874964" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+</div>

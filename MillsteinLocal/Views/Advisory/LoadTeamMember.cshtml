@@ -1,0 +1,77 @@
+﻿@model MillsteinLocal.Models.TeamModel
+
+
+
+<div class="row firm_title">
+    <div class="col-xs-9 logo">
+        <a href="~/home"><img src="~/Images/logo-all.png" /></a>
+    </div>
+    <div class="col-xs-3 firm_sidebar advisory_leftbar_title">
+        <ul class="list-inline firm_sidebar_ul">
+            <li><a href="#">Advisory</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row firm_content inv_content">
+    <div class="col-md-9 col-xs-12 inv_content_descriprion">
+        <div class="show_buttom_advisory visible-xs visible-sm">
+            <button class="btn btn-default advisory_button">View all Advisers</button>
+            <ul class="left_bar_advisory mobile_left_bar_advisory">
+                <li><a href="~/JimMillstein/">Jim Millstein</a></li> </br>
+                @foreach (var member in @Model.teamList.OrderBy(c=>c.LastName))
+                {
+
+                    <li><a href="~/advisory/info/@member.Id">@member.FirstName @member.LastName</a></li>
+                }
+            </ul>
+        </div>
+        <div class="adv_info">
+            <div class="col-sm-6 col-xs-12 advisory_img">
+                <img src="~/Images/advisory/@Model.team.Image" />
+            </div>
+            <div class="col-sm-6 col-xs-12 advisory_info">
+                <h2 class="ceo_name">@Model.team.FirstName @Model.team.LastName</h2>
+                <p class="ceo_name_description">@Model.team.Title</p>
+                <p class="adv_info_title">@Model.team.Description</p>
+            </div>
+        </div>
+        <div class="adv_content adv_info_content">
+            <p class="inv_company_desc">
+                <i>
+                    @Html.Raw(@Model.team.Note.Replace("<p>","").Replace("</p>",""))
+                </i>
+            </p>
+         
+                @if (Model.team.NoteWriter != null)
+                {
+                    <span class="pull-right">
+                        <br>
+
+                        @Model.team.NoteWriter
+
+
+
+                        <br>@Model.team.NoteWriterTitle
+
+
+                    </span>
+                }
+
+        </div>
+        <div class="advisory_company">
+
+            @Html.Raw(@Model.team.Content)
+        </div>
+    </div>
+    <div class="col-xs-3 visible-lg visible-md">
+        <ul class="left_bar_advisory">
+            <li><a href="~/JimMillstein/">Jim Millstein</a></li> </br>
+            @foreach (var member in @Model.teamList.OrderBy(c => c.LastName))
+            {
+
+                <li><a class="members" id="@member.Id" href="">@member.FirstName @member.LastName</a></li>
+            }
+
+        </ul>
+    </div>
+</div>

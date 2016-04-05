@@ -1,0 +1,51 @@
+
+@{
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    
+@if (ViewBag.Firmfooter == "on")
+{
+    <footer class="footer ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-sm-12 col-xs-12 copyright copyright_secondary">
+                    <span class="icon_copyright icon_secondary_copyright">&copy; 2016 Millstein & Co., L.P. | <a href="~/About/TermsAndConditions">Terms and Conditions </a></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+}
+else
+{
+
+    <footer class="footer ">
+        <div class="container">
+            <div class="row ">
+                <div class="col-sm-12 col-xs-12 copyright copyright_secondary">
+                    <span class="icon_copyright icon_secondary_copyright">&copy; 2016 Millstein & Co., L.P. | <a href="~/About/TermsAndConditions">Terms and Conditions </a></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+}
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(".body-content").css("position", "relative");
+
+    </script>
+}
+
+
+@*@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")*@
+@RenderSection("scripts", required: false)

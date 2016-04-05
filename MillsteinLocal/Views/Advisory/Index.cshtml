@@ -1,0 +1,82 @@
+﻿@model MillsteinLocal.Models.TeamModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Secomdary_Layout.cshtml";
+
+    ViewBag.AdvisoryActive = "menu_top_border";
+    
+}
+
+
+<div class="row firm_title">
+    <div class="col-xs-9 logo">
+        <a href="~/home"><img src="~/Images/logo-all.png" /></a>
+    </div>
+    <div class="col-xs-3 firm_sidebar advisory_leftbar_title">
+        <ul class="list-inline firm_sidebar_ul">
+            <li><a href="#">Advisory</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row firm_content inv_content">
+    <div class="col-md-9 col-xs-12 inv_content_descriprion">
+        <div class="show_buttom_advisory visible-sm visible-xs">
+            <button class="btn btn-default advisory_button">View all Advisers</button>
+            <ul class="left_bar_advisory mobile_left_bar_advisory">
+                <li><a href="~/JimMillstein/">Jim Millstein</a></li> </br>
+                @foreach (var member in @Model.teamList.OrderBy(c => c.LastName))
+                {
+
+                    <li><a href="~/advisory/info/@member.Id">@member.FirstName @member.LastName</a></li>
+                }
+            </ul>
+        </div>
+        <div class="adv_content">
+            <p class="inv_company_desc"><i> @Html.Raw(@Model.advisory.Quote.Replace("<p>","").Replace("</p>","")) </i></p>
+        </div>
+        <div class="advisory_company ">
+            <img src="~/Images/advisory.jpg" />
+            <h4 class="investment_title">@Model.advisory.ContentTitle1</h4>
+             @Html.Raw(@Model.advisory.Content1)  
+            <h4 class="investment_title">@Model.advisory.ContentTitle2</h4>
+             @Html.Raw(@Model.advisory.Content2)  
+            <h4 class="investment_title">@Model.advisory.ContentTitle3</h4>
+
+                @Html.Raw(@Model.advisory.Content3)
+
+            </div>
+    </div>
+    <div class="col-xs-3 visible-lg visible-md">
+        <ul class="left_bar_advisory">
+            <li><a href="~/JimMillstein/">Jim Millstein</a></li> </br>
+            @foreach (var member in @Model.teamList.OrderBy(c => c.LastName))
+            {
+                
+                <li><a href="~/advisory/info/@member.Id">@member.FirstName @member.LastName</a></li>
+            }
+
+
+            @*<li><a href="~/advisory/info">Brendan Hayes</a></li>
+            <li><a href="~/advisory/info">Elizabeth Abrams</a></li>
+            <li><a href="~/advisory/info">Mark Hootnick</a></li>
+            <li><a href="~/advisory/info">Jane Vris</a></li>
+            <li><a href="~/advisory/info">Mark Walker</a></li>
+            <li><a href="~/advisory/info">Ashley Winston, PhD</a></li>
+            <li><a href="~/advisory/info">Jill Dauchy</a></li>
+            <li><a href="~/advisory/info">Jim Wigand</a></li>
+            <li><a href="~/advisory/info">Jenni Main</a></li>*@
+        </ul>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".advisory_button").click(function () {
+                $(".mobile_left_bar_advisory").slideToggle("slow");
+            });
+        });
+    </script>
+}

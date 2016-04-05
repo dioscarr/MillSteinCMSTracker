@@ -1,0 +1,192 @@
+﻿@model MillsteinLocal.Areas.Admin.Models.InvestmentModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Secomdary_Layout.cshtml";
+
+    ViewBag.InvestmentActive = "menu_top_border";
+    ViewBag.Firmfooter = "on";
+}
+
+@using (@Html.BeginForm("UpdateInvestment", "AdminInvestment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+
+    @Html.HiddenFor(c => c.InvestmentDetail.Id)
+    @Html.HiddenFor(c => c.InvestmentDetail.Created)
+    @Html.HiddenFor(c => c.InvestmentDetail.isDeleted)
+    @Html.HiddenFor(c => c.InvestmentDetail.Modified)
+    @Html.HiddenFor(c => c.InvestmentDetail.Picture)
+
+
+
+
+    <div class="row outer-Box" style=" margin-top:20px;">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading"> Asset Management</div>
+                <div class="panel-body">
+                    <div class="form-group">
+
+
+                        <div class="row firm_title">
+                            <div class="col-md-9 col-sm-8 col-xs-12 logo">
+                                <a href="~/home"><img src="~/Images/logo-all.png" /></a>
+                            </div>
+                            <div class="col-md-3 col-sm-4 col-xs-12 firm_sidebar">
+                                <ul class="list-inline firm_sidebar_ul">
+                                    <li><a href="#">Asset Management</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        @* All Devices  *@
+                        <div class="row firm_content inv_content">
+                            <div class="col-md-9 col-sm-8 inv_content_descriprion">
+                                <div class="inv_company_desc adv_content">
+                                    <div class="image_desc image_desc_inv">
+                                        <div class="news_title">
+                                            
+                                            <h2 style="color:white;">Header</h2>
+                                        </div>
+                                        <i>
+                                            @Html.EditorFor(model => model.InvestmentDetail.HeaderContent, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+
+                                        </i>
+                                    </div>
+                                    <br />
+                                    <div class="image_desc image_desc_inv">
+                                        <div class="news_title">
+                                            <h2 style="color:white;">Content Title</h2>
+                                        </div>
+                                        <h4 class="investment_title">
+                                            @Html.EditorFor(model => model.InvestmentDetail.ContentTitle1, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+
+                                        </h4>
+                                        <div class="image_desc image_desc_inv">
+                                            <div class="news_title">
+                                                <h2 style="color:white;">Content</h2>
+                                            </div>
+                                            @Html.TextAreaFor(model => model.InvestmentDetail.Content1, 80, 10, new { @class = "form-control ckeditor investment-detail-content", @name = "editor1" })
+                                            <div class="image_desc image_desc_inv">
+                                                <div class="news_title">
+                                                    <h2 style="color:white;">Content Title</h2>
+                                                </div>
+                                                <h4 class="investment_title">
+
+                                                    @Html.EditorFor(model => model.InvestmentDetail.ContentTitle2, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+
+
+                                                </h4>
+                                               
+                                               
+                                            </div>
+                                           
+
+                                        </div>
+                                        <div class="image_desc image_desc_inv">
+                                            <div class="news_title">
+                                                <h2 style="color:white;">Content</h2>
+                                            </div>
+                                            @Html.TextAreaFor(model => model.InvestmentDetail.Content2, 80, 10, new { @class = "form-control ckeditor investment-detail-content", @name = "editor1" })
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-3 col-sm-4 firm_image">
+                                <img src="~/Images/@Model.InvestmentDetail.Picture" />
+                                <br />
+                                <br />
+                                @Html.CheckBoxFor(c => c.isNewPicture, new { id = "checkIfNew" })
+                                <label>Check to select new Image</label>
+                                <div id="newPicture" style="display:none;">
+                                    @Html.LabelFor(m => m.ImageUpload)
+                                    @Html.TextBoxFor(m => m.ImageUpload, new { @type = "file" })
+
+                                </div>
+                                <br />
+                                <br />
+                                <div class="image_desc image_desc_inv">
+                                    <div class="news_title">
+                                        <h2>Picture Content</h2>
+                                    </div>
+                                    @Html.EditorFor(model => model.InvestmentDetail.PictureContent, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="col-md-12 nopadding" style="margin-bottom: 50px!important;">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Advance Options</div>
+                <div class="panel-body">
+                    <div class="form-group">
+
+
+                        <div class="form-group">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-4">
+                                @Html.ActionLink("Cancel", "Ceo", null, new { @class = "btn btn-default" })
+                            </div>
+                            <div class="col-md-offset-2 col-md-4">
+                                <input type="submit" value="Update" class="btn btn-default" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        }
+
+
+        @section scripts{
+
+            <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+            <link href="~/Content/prettify.css" rel="stylesheet" />
+            <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+            <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+            <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+            <script src="~/Scripts/bootstrap-datetimepicker.fr.js"></script>
+            <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(".advisory_button").click(function () {
+                        $(".mobile_left_bar_advisory").slideToggle("slow");
+                    });
+
+
+
+                    $('#checkIfNew').change(function () {
+
+
+
+                        $('#newPicture').slideToggle();
+                    }
+                    );
+
+
+
+
+
+                });
+            </script>
+        }
+

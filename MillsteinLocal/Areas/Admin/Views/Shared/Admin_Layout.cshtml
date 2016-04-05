@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>@ViewBag.Title - MillsteinLocal & Co.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!-- Css Styles -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <!-- Open Sans Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,700italic,800,800italic,600italic,600,400italic,300,300italic' rel='stylesheet' type='text/css'>
+    <!-- Merriweather -->
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700italic,700,900,900italic' rel='stylesheet' type='text/css'>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="body-content">
+
+    <nav class="header_menu header_menu_home navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="row">
+
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand visible-xs" href=""><i></i></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-left nav_link">
+                        <li class="first_nav_li" role="presentation"><a class="@ViewBag.HomeActive" href="~/Admin//home/index">HOME</a></li>
+                        <!-- <li role="presentation"><a href="out-firm.html">OUR FIRM</a></li> -->                       
+                        @*<li role="presentation"><a href="~/Admin/AdminFirm/index">OUR FIRM</a></li>*@
+                        <li role="presentation"><a href="~/Admin/AdminFirm/CEo">JIM MILLSTEIN</a></li>
+                        <li role="presentation"><a class="@ViewBag.AdvisoryActive" href="~/Admin/Advisors/Index">ADVISORY</a></li>
+                        <li role="presentation"><a class="@ViewBag.InvestmentActive" href="~/Admin/Admininvestment/Index">ASSET MANAGEMENT</a></li>
+                        <li role="presentation"><a class="@ViewBag.NewsActive" href="~/Admin/AdminNews/Index">NEWS</a></li>
+                        <li role="presentation"><a class="@ViewBag.ContactActive" href="~/Admin/Admincontact/index">CONTACT</a></li>
+                       
+                        <li role="presentation"><a class="@ViewBag.ContactActive" href="~/Admin/Admincareers/index">Careers</a></li>
+                        <li role="presentation"><a class="@ViewBag.ContactActive" href="~/Admin/Log/index">Log</a></li>
+
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div><!-- /.navbar-collapse -->
+
+            </div><!-- /.container-fluid -->
+        </div>
+    </nav>
+
+    <div class="">
+        @RenderBody()
+   
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

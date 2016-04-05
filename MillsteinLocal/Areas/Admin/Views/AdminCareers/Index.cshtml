@@ -1,0 +1,78 @@
+﻿@model DAL.Models.Careers
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Secomdary_Layout.cshtml";
+    ViewBag.activeCareer = "menu_top_border";
+}
+
+<div class="row firm_title">
+    <div class="col-sm-9 col-xs-12 logo">
+        <a href="~/home"><img src="~/Images/logo-all.png" /></a>
+    </div>
+    <div class="col-sm-3 col-xs-12 firm_sidebar">
+        <ul class="list-inline firm_sidebar_ul">
+            <li><a href="#">Careers</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-9 col-xs-12">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                @for (var i = 0; i < 3; i++)
+                {
+                    if (i == 0)
+                    {
+                        <li data-target="#myCarousel" data-slide-to="@i" class="active"></li>
+                    }
+                    else
+                    {
+                        <li data-target="#myCarousel" data-slide-to="@i"></li>
+                    }
+
+
+                }
+
+
+
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="~/Images/slide1.jpg" alt="Chania">
+                </div>
+
+                @*<div class="item">
+                        <img src="~/Images/slide2.jpg" alt="Chania">
+                    </div>*@
+
+                <div class="item">
+                    <img src="~/Images/slide3.jpg" alt="Flower">
+                </div>
+
+                <div class="item">
+                    <img src="~/Images/slide4.jpg" alt="Flower">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="advisory_company inv_content_descriprion">
+            <h4 class="investment_title">@Model.Header1</h4>
+            @Html.Raw(@Model.Content1)
+            <h4 class="investment_title">@Model.Header2</h4>
+           @Html.Raw(@Model.Content2)
+        </div>
+    </div>
+    <div class="col-xs-3 visible-lg visible-md">
+        <ul class="left_bar_advisory ">
+            To contact us about career opportunities:
+            <li ><a style="color:#8d0013" href="mailto: @Model.Email">@Model.Email</a></li>
+            </ul>
+</div>
+      
+
+    </div>

@@ -1,0 +1,191 @@
+﻿@model MillsteinLocal.Areas.Admin.Models.NewsModel
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Secomdary_Layout.cshtml";
+
+    ViewBag.NewsActive = "menu_top_border";
+    ViewBag.Firmfooter = "on";
+
+
+}
+
+
+
+<div class="row outer-Box" style=" margin-top:20px;">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading"> News</div>
+            <div class="panel-body">
+    <div class="form-group">
+
+
+        <div class="row firm_title">
+            <div class="col-sm-9 col-xs-12 logo">
+                <a href="~/Admin/home/index"><img src="~/Images/logo-all.png" /></a>
+            </div>
+            <div class="col-sm-3 col-xs-12 firm_sidebar">
+                <ul class="list-inline firm_sidebar_ul">
+                    <li><a href="~/Admin/AdminNews/">News</a></li>
+                </ul>
+            </div>
+        </div>
+
+        @Html.ActionLink("Add News", "insert", null, new { @class = "btn btn-default btn-sm " })
+        <hr />
+
+        <div class="row visible-lg visible-md visible-sm">
+            <div class="col-xs-9">
+                <div class="news_title">
+                    <h2>Recent News</h2>
+                </div>
+                @if (@Model.NewsList != null)
+                {
+                    <div class="news_detail">
+
+                        @foreach (var news in @Model.NewsList)
+                        {
+                            <h3><a href="~/Admin/AdminNews/Article/@news.NewsId">@String.Format("{0:MMMM dd, yyyy}", news.NewsDate)</a></h3>
+                            <span><a href="~/Admin/AdminNews/Article/@news.NewsId">@Html.Raw(@news.NewsTitle)</a></span>
+
+
+    <span class="pull-right">
+        @Html.ActionLink("Edit", "Article", new { id = news.NewsId }, new { @class = "btn btn-default btn-xs " })
+        @Html.ActionLink("Delete", "delete", new { id = @news.NewsId }, new { @class = "btn btn-default btn-xs " })
+                        
+                      @*// <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">*@
+            @*Delete
+        </button>*@
+
+       
+    </span><br /><br />
+
+
+
+
+
+                            @*<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">Delete</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete @news.NewsTitle?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                 
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->*@
+
+
+
+
+
+
+
+                        }
+                    </div>
+                }
+                        </div>
+                        <div class="col-xs-3">
+                            @if (@Model.NewsList != null)
+                            {
+                                <ul class="left_bar_advisory">
+                                    <li><a class="adv_active" href="~/Admin/AdminNews/index">Recent News</a></li>
+                                    <li><a href="~/Admin/AdminNews/index">Press</a></li>
+                                    <li>
+
+                                        <a href="~/Admin/AdminNews/Index?year=2015">
+                                            Archive
+                                            <ul class="news_archive">
+                                                @foreach (var year in @Model.Years)
+                                                {
+                                                    <li><a href="~/Admin/AdminNews/Index/@year">@year</a></li>
+                                                }
+                                            </ul>
+                                        </a>
+                                    </li>
+                                </ul>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="visible-xs row">
+                        <div class="col-xs-12">
+                            <button class="btn btn-default advisory_button">View all News</button>
+                            @if (@Model.NewsList != null)
+                            {
+                                <ul class="left_bar_advisory mobile_left_bar_advisory">
+                                    <li><a class="adv_active" href="~/News/">Recent News</a></li>
+                                    <li><a href="~/News/">Press</a></li>
+                                    <li>
+
+                                        <a href="~/News/Index?year=2015">
+                                            Archive
+                                            <ul class="news_archive">
+                                                @foreach (var year in @Model.Years)
+                                                {
+                                                    <li><a href="~/News/Index/@year">@year</a></li>
+                                                }
+                                            </ul>
+                                        </a>
+                                    </li>
+                                </ul>
+                            }
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="news_title">
+                                <h2>Recent News</h2>
+                            </div>
+                            @if (@Model.NewsList != null)
+                            {
+                                <div class="news_detail">
+
+                                    @foreach (var news in @Model.NewsList)
+                                    {
+                                        <h3><a href="~/News/Article/@news.NewsId">@String.Format("{0:MMMM dd, yyyy}", news.NewsDate)</a></h3>
+                                        <span><a href="~/News/Article/@news.NewsId">@Html.Raw(@news.NewsTitle)</a></span><br /><br />
+
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".advisory_button").click(function () {
+                $(".mobile_left_bar_advisory").slideToggle("slow");
+            });
+        });
+    </script>
+}

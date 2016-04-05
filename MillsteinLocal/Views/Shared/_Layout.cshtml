@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+    <!-- Favicon -->
+    <link rel="SHORTCUT icon" href="/images/favicons/favicon.ico">
+    <!-- For iPhone 6 Plus with 3Ã— display: -->
+    <link rel="apple-icon-precomposed" sizes="180x180" href="/images/favicons/apple-icon-180x180.png">
+    <!-- For iPad with 2Ã— display running iOS â‰¥ 7: -->
+    <link rel="apple-icon-precomposed" sizes="152x152" href="/images/favicons/apple-icon-152x152-precomposed.png">
+    <!-- For iPad with 2Ã— display running iOS â‰¤ 6: -->
+    <link rel="apple-icon-precomposed" sizes="144x144" href="/images/favicons/apple-icon-144x144-precomposed.png">
+    <!-- For iPhone with 2Ã— display running iOS â‰¥ 7: -->
+    <link rel="apple-icon-precomposed" sizes="120x120" href="/images/favicons/apple-icon-120x120-precomposed.png">
+    <!-- For iPhone with 2Ã— display running iOS â‰¤ 6: -->
+    <link rel="apple-icon-precomposed" sizes="114x114" href="/images/favicons/apple-icon-114x114-precomposed.png">
+    <!-- For the iPad mini and the first- and second-generation iPad (1Ã— display) on iOS â‰¥ 7: -->
+    <link rel="apple-icon-precomposed" sizes="76x76" href="/images/favicons/apple-icon-76x76-precomposed.png">
+    <!-- For the iPad mini and the first- and second-generation iPad (1Ã— display) on iOS â‰¤ 6: -->
+    <link rel="apple-icon-precomposed" sizes="72x72" href="/images/favicons/apple-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-icon-precomposed" href="/images/favicons/apple-icon-precomposed.png"><!-- 57Ã—57px -->
+    <!-- For IE 10 Metro tile icon: -->
+    <meta name="msapplication-TileImage" content="/images/favicons/ms-icon-144x144.png">
+    <link rel="icon" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+
+
+    
+    <title>Millstein and Co. | Jim Millstein </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Milllstein & Co. is a financial services firm that brings a unique combination of professional skills to is advisory and asset management businesses.">
+    <meta name="author" content="Jim Milllstein, Advisory, Restructuring, Sovereign, Financial Institutions, Middle Market Private Equity, Special Situations, Merchant Bank">
+    <!-- Css Styles --> 
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <!-- Open Sans Fonts-->
+   @* <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,700italic,800,800italic,600italic,600,400italic,300,300italic' rel='stylesheet' type='text/css'>*@
+    <!-- Merriweather -->
+    @*<link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700italic,700,900,900italic' rel='stylesheet' type='text/css'>*@
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body class="body-content">
+
+    <nav class="header_menu header_menu_home navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="row">
+
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @*<a class="navbar-brand visible-xs" href=""><i>Full site launching January 2016</i></a>*@
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-left nav_link">
+                        <li class="first_nav_li" role="presentation"><a class="@ViewBag.HomeActive" href="~/home">HOME</a></li>
+                        <!-- <li role="presentation"><a href="out-firm.html">OUR FIRM</a></li> -->
+
+                        @* <li role="presentation" class="dropdown">
+                            <a href="~/firm" class="@ViewBag.FirmActive dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">OUR FIRM</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="~/firm">OUR FIRM</a></li>
+                                <li><a href="~/firm/ceo">CEO</a></li>
+                            </ul>
+                        </li> *@
+                       @* <li role="presentation"><a href="~/firm" class="@ViewBag.FirmActive">OUR FIRM</a></li>*@
+                        <li role="presentation"><a class="@ViewBag.AdvisoryActive" href="~/advisory">ADVISORY</a></li>
+                        <li role="presentation"><a class="@ViewBag.InvestmentActive" href="~/investment">ASSET MANAGEMENT</a></li>
+                        <li role="presentation"><a class="@ViewBag.NewsActive" href="~/news">NEWS</a></li>
+                        <li role="presentation"><a class="@ViewBag.ContactActive" href="~/contact">CONTACT</a></li>
+                        <li role="presentation"><a class="@ViewBag.activeCareer" href="~/Careers/">CAREERS</a></li>  
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right nav_link">
+                        @* <li role="presentation"><a href="~/contact/NyCity/9">NEW YORK</a></li>
+                        <li role="presentation"><a href="~/contact/WashingtonDCCity/10">WASHINGTON, DC</a></li> *@
+                                           
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+
+            </div><!-- /.container-fluid -->
+        </div>
+    </nav>
+
+    <div class="">
+        @RenderBody()
+    </div>
+   
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

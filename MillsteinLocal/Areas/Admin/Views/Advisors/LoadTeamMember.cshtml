@@ -1,0 +1,213 @@
+﻿@model MillsteinLocal.Areas.Admin.Models.TeamModel
+
+
+
+
+    @Html.HiddenFor(c => c.team.Id)
+    @Html.HiddenFor(c => c.team.Created)
+    @Html.HiddenFor(c => c.team.isDeleted)
+    @Html.HiddenFor(c => c.team.Modified)
+@Html.HiddenFor(c => c.team.Image)
+@Html.HiddenFor(c => c.team.Type)
+
+
+
+
+
+    <div class="row outer-Box" style="margin-top:20px;">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading"> Advisory</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                      
+
+
+                        <div class="row firm_title">
+                            <div class="col-xs-9 logo">
+                                <a href="~/home"><img src="~/Images/logo-all.png" /></a>
+                            </div>
+                            <div class="col-xs-3 firm_sidebar advisory_leftbar_title">
+                                <ul class="list-inline firm_sidebar_ul">
+                                    <li><a href="#">Advisory</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row firm_content inv_content">
+                            <div class="col-md-9 col-xs-12 inv_content_descriprion">
+                                <div class="show_buttom_advisory visible-xs visible-sm">
+                                    <button class="btn btn-default advisory_button" type="button" id="btnviewAll">View all Advisers</button>
+                                    <ul class="left_bar_advisory mobile_left_bar_advisory">
+                                        @foreach (var member in @Model.teamList)
+                                        {
+
+                                            <li><a href="~/Admin/advisors/info/@member.Id">@member.FirstName @member.LastName</a></li>
+                                        }
+                                        <li>
+                                            @Html.ActionLink("Add New Advisory", "InsertMembers", null, new { @class = "btn btn-primary btn-xs", style = "color:white;" })
+                                            <hr />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="adv_info">
+                                    <div class="col-sm-6 col-xs-12 advisory_img">
+                                        <img src="~/Images/advisory/@Model.team.Image" />
+                                        <br />
+                                        <br />
+                                        @Html.CheckBoxFor(c => c.isNewPicture, new { id = "checkIfNew" })
+                                        <label>Check to select new Image</label>
+                                        <div id="newPicture" style="display:none;">
+                                            @Html.LabelFor(m => m.ImageUpload)
+                                            @Html.TextBoxFor(m => m.ImageUpload, new { @type = "file" })
+
+                                        </div>
+                                        <br />
+                                        <br />
+                                    </div>
+
+
+                                    <br />
+                                    <div class="col-sm-6 col-xs-12 advisory_info">
+
+                                        <div class="news_title">
+                                            <h2>First Name</h2>
+                                        </div>
+
+                                        @Html.EditorFor(model => model.team.FirstName, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-12 form-control " } })
+                                        <br />
+                                        <div class="news_title">
+                                            <h2>Last NAE</h2>
+                                        </div>
+                                        @Html.EditorFor(model => model.team.LastName, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+
+                                        <div class="news_title">
+                                            <h2>Title</h2>
+                                        </div>
+
+                                        @Html.EditorFor(model => model.team.Title, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+
+                                        <div class="news_title">
+                                            <h2>Note Author</h2>
+                                        </div>
+
+                                        @Html.EditorFor(model => model.team.Description, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+
+
+                                    </div>
+                                </div>
+                                <div class="adv_content adv_info_content">
+                                    <div class="news_title">
+                                        <h2>Note content</h2>
+                                    </div>
+                                    <p class="inv_company_desc">
+                                        <i>
+                                            @Html.TextAreaFor(model => model.team.Note, 80, 10, new { @class = "form-control ckeditor investment-detail-content", @name = "editor1" })
+                                        </i>
+                                    </p>
+                                    <br>
+
+                                    <div class="pull-left">
+                                        <div class="news_title">
+                                            <h2>Note Author</h2>
+                                        </div>
+                                        @Html.EditorFor(model => model.team.NoteWriter, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-12 form-control " } })
+                                        <br />
+                                        <div class="news_title">
+                                            <h2>Writer title</h2>
+                                        </div>
+                                        <br>@Html.EditorFor(model => model.team.NoteWriterTitle, new { htmlAttributes = new { @class = " input-group date form_datetime col-lg-4 form-control " } })
+                                    </div>
+                                </div>
+                                <div class="advisory_company">
+                                    <div class="news_title">
+                                        <h2>Content</h2>
+                                    </div>
+                                    @Html.TextAreaFor(model => model.team.Content, 80, 10, new { @class = "form-control ckeditor investment-detail-content", @name = "editor1" })
+
+
+                                </div>
+                            </div>
+                            <div class="col-xs-3 visible-lg visible-md">
+                                <ul class="left_bar_advisory">
+                                    @foreach (var member in @Model.teamList)
+                                    {
+
+                                        <li><a class="members" id="@member.Id" href="">@member.FirstName @member.LastName</a></li>
+                                    }
+                                    <li>
+                                        @Html.ActionLink("Add New Advisory", "InsertMembers", null, new { @class = "btn btn-primary btn-xs", style="color:white;" })
+                                    <hr />
+                                </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 nopadding" style="margin-bottom: 50px!important;">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Advance Options</div>
+                                <div class="panel-body">
+                                    <div class="form-group">
+
+
+                                        <div class="form-group">
+
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                           
+                                            <div class=" col-md-4">
+                                                <input type="submit" value="Update Advisory" class="btn btn-default" />
+                                            </div>
+                                            <div class=" col-md-4">
+                                                @Html.ActionLink("Cancel", "index", null, new { @class = "btn btn-default" })
+                                            </div>
+                                            <div class=" col-md-4">
+                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Delete</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete @Model.team.FirstName @Model.team.LastName?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                @Html.ActionLink("Delete", "delete", null, new { @class = "btn btn-danger" })
+                
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+

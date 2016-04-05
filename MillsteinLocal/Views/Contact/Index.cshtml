@@ -1,0 +1,117 @@
+﻿@model MillsteinLocal.Models.ContactModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Secomdary_Layout.cshtml";
+
+    ViewBag.ContactActive = "menu_top_border";
+    ViewBag.Firmfooter = "on";
+}
+
+
+
+<div class="row firm_title">
+    <div class="col-sm-9 col-xs-12 logo">
+        <a href="~/home"><img src="~/Images/logo-all.png" /></a>
+    </div>
+    <div class="col-sm-3 col-xs-12 firm_sidebar">
+        <ul class="list-inline firm_sidebar_ul">
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+</div>
+<div class="visible-lg visible-md visible-sm row contact_content">
+    <div class="col-xs-9 contact_company_main_block">
+        <img class="contact_company_image" src="~/Images/news.jpg" />
+        <div class="row contact_row_padding">
+            <div class="col-xs-6 contact_information">
+                <h3>@Model.ContactDetail.ContentHeader</h3>
+                <span>@Model.ContactDetail.FirstName @Model.ContactDetail.LastName</span><br />
+                <span><a class="news_archive_link" href="mailto:@Model.ContactDetail.Email">@Model.ContactDetail.Email</a></span><br />
+                <span>@Model.ContactDetail.Tel</span><br />          
+            </div>
+            <div class="col-xs-6 contact_information">
+                @*<h3>@Model.ContactDetail.CareersHeader</h3>
+                <span><a class="news_archive_link" href="mailto:@Model.ContactDetail.CareersEmail">@Model.ContactDetail.CareersEmail</a></span>*@
+            </div>
+           
+        </div>
+        <br />
+        <div class="row contact_row_padding">
+            <div class="col-xs-6 contact_information">
+                <h3>NEW YORK</h3>
+                <span>555 Madison Avenue</span><br />
+                <span>New York, NY 10022</span><br />
+                <span>212-416-5800</span><br /><br />
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.033771664079!2d-73.97488208425284!3d40.76128194253543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258fade18b13f%3A0xba78b881fa0968ac!2s555+Madison+Ave%2C+New+York%2C+NY+10022!5e0!3m2!1sen!2sus!4v1450194484089" width="100%" height="450" frameborder="0" style="border: 5px solid #fff;" allowfullscreen></iframe>
+            </div>
+            <div class="col-xs-6 contact_information">
+                <h3>WASHINGTON</h3>
+                <span>1717 Pennsylvania Ave. NW</span><br />
+                <span>Washington, D.C. 20006</span><br />
+                <span>202-800-2860</span><br /><br />
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.071017129721!2d-77.04256088464956!3d38.89949127957042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7bb9bec2649%3A0x76560dcc1089667e!2s1717+Pennsylvania+Ave+NW%2C+Washington%2C+DC+20006!5e0!3m2!1sen!2sus!4v1450361874964" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+        
+    </div>
+    @* <div class="col-xs-3">
+        <ul class="left_bar_advisory">
+            <li><a href="~/Contact/NyCity/@Model.Locations[0].Id">@Model.Locations[0].LocationName</a></li>
+            <li><a href="~/Contact/WashingtonDCCity/@Model.Locations[1].Id">@Model.Locations[1].LocationName</a></li>
+        </ul>
+    </div> *@
+</div>
+
+
+<div class="visible-xs row contact_content">
+    <div class="col-xs-12">
+        <button class="btn btn-default advisory_button">View all Contact</button>
+        <ul class="left_bar_advisory mobile_left_bar_advisory">
+            <li><a href="~/Contact">Contact</a></li>
+            <li><a href="~/Contact/NyCity/@Model.Locations[0].Id">@Model.Locations[0].LocationName</a></li>
+            <li><a href="~/Contact/WashingtonDCCity/@Model.Locations[1].Id">@Model.Locations[1].LocationName</a></li>
+        </ul>
+    </div>
+    <div class="col-xs-12 contact_company_main_block">
+        <img class="contact_company_image" src="~/Images/contact.jpg" />
+        <div class="row contact_row_padding">
+            <div class="col-xs-12 contact_information">
+                <h3>@Model.ContactDetail.ContentHeader</h3>
+                <span>@Model.ContactDetail.FirstName @Model.ContactDetail.LastName</span><br />
+                <span><a class="news_archive_link" href="mailto:@Model.ContactDetail.Email">@Model.ContactDetail.Email</a></span><br />
+                <span>@Model.ContactDetail.Tel</span><br />          
+            </div>
+            <div class="col-xs-6 contact_information">
+                <h3>@Model.ContactDetail.CareersHeader</h3>
+                <span><a class="news_archive_link" href="mailto:@Model.ContactDetail.CareersEmail">@Model.ContactDetail.CareersEmail</a></span>
+            </div>
+        </div>
+        <div class="row contact_row_padding">
+            <div class="col-xs-12 contact_information">
+                <h3>NEW YORK</h3>
+                <span>555 Madison Avenue</span><br />
+                <span>New York, NY 10022</span><br />
+                <span>212-416-5800</span><br /><br />
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.033771664079!2d-73.97488208425284!3d40.76128194253543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258fade18b13f%3A0xba78b881fa0968ac!2s555+Madison+Ave%2C+New+York%2C+NY+10022!5e0!3m2!1sen!2sus!4v1450194484089" width="100%" height="250" frameborder="0" style="border: 5px solid #fff;" allowfullscreen></iframe>
+            </div>
+            <div class="col-xs-12 contact_information">
+                <h3>WASHINGTON</h3>
+                <span>1717 Pennsylvania Ave. NW</span><br />
+                <span>Washington, D.C. 20006</span><br />
+                <span>202-800-2860</span><br /><br />
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.071017129721!2d-77.04256088464956!3d38.89949127957042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7bb9bec2649%3A0x76560dcc1089667e!2s1717+Pennsylvania+Ave+NW%2C+Washington%2C+DC+20006!5e0!3m2!1sen!2sus!4v1450361874964" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".advisory_button").click(function () {
+                $(".mobile_left_bar_advisory").slideToggle("slow");
+            });
+        });
+    </script>
+}

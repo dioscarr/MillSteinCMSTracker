@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7f00c73b3b9d4c21900968f571e50277" Name="Diagram1">
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.CEO" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Contact" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Investment" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Locations" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.News" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Pages" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Person_" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Slider" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Team" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="MillsteinPlesk_Model.FK_Person__News" ManuallyRouted="false" />
+        <AssociationConnector Association="MillsteinPlesk_Model.FK_Slider_Pages" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Advisory" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Firm" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Advisory_log" Width="1.5" PointX="10.375" PointY="9.75" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.CEO_log" Width="1.5" PointX="12.375" PointY="9.75" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Contact_log" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.News_log" Width="1.5" PointX="5.375" PointY="13.75" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Pages_log" Width="1.5" PointX="10.375" PointY="5.25" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Person_log" Width="1.5" PointX="3" PointY="10.125" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Slider_log" Width="1.5" PointX="12.625" PointY="5" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Team_log" Width="1.5" PointX="7.375" PointY="13.75" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Firm_log" Width="1.5" PointX="14.375" PointY="0.75" />
+        <AssociationConnector Association="MillsteinPlesk_Model.FK_Person__Newslog" />
+        <AssociationConnector Association="MillsteinPlesk_Model.FK_Slider_Pageslog" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Careers" Width="1.5" PointX="14.375" PointY="9.75" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Investment_log" Width="1.5" PointX="9.375" PointY="14.75" />
+        <EntityTypeShape EntityType="MillsteinPlesk_Model.Careers_log" Width="1.5" PointX="11.375" PointY="14.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
