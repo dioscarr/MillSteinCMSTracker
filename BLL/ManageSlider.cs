@@ -68,7 +68,7 @@ namespace BLL
             Slider_log nn = new Slider_log()
             {  
                 HomeId = n.HomeId,
-                Modified = DateTime.Now.Date,
+                Modified = DateTime.Now,
                 Id = n.Id,
                 QuoteLocation = n.QuoteLocation,
                 isDeleted = n.isDeleted,
@@ -79,7 +79,7 @@ namespace BLL
                 Type = "Update"
             };
            
-            n.Modified = DateTime.Now.Date;
+            n.Modified = DateTime.Now;
             var nnn = Manage<Slider, SliderRepository>.Update(n);
             if (nnn != false)
             {

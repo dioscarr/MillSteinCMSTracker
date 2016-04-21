@@ -73,7 +73,7 @@ namespace BLL
         public static bool UpdatePerson(Person_ n)
         {
 
-            n.Modified = DateTime.Now.Date;
+            n.Modified = DateTime.Now;
 
             Person_log p = new Person_log()
             {
@@ -96,7 +96,7 @@ namespace BLL
 
             var result = Manage<Person_, PersonRepository>.Update(n);
 
-            if (result != null)
+            if (result != false)
             {
                 Manage<Person_log, Person_logRepository>.Update(p);
             }

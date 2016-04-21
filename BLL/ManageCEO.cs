@@ -72,11 +72,11 @@ namespace BLL
         #region Update Methods -- UpdateCEO
         public static bool UpdateCEO(CEO n)
         {
-            n.Modified = DateTime.Now.Date;
-            CEO_log CE = new CEO_log()
+            n.Modified = DateTime.Now;
+            CEO_log nn = new CEO_log()
             {
                 Content = n.Content,
-                Created = DateTime.Now.Date,
+                Created = DateTime.Now,
                 Description = n.Description,
                 FirstName = n.FirstName,
                 LastName = n.LastName,
@@ -89,11 +89,23 @@ namespace BLL
                 Title = n.Title,
                 Type = "Update"
             };
-           var result =  Manage<CEO, CEORepository>.Update(n);
+
+            if (nn.isDeleted == true)
+            {
+                nn.Type = "Deleted";
+                //save to database
+                Manage<CEO_log, CEO_logRepository>.Add(nn);
+                n.Modified = DateTime.Now
+                    ;
+                var nnn1 = Manage<CEO, CEORepository>.Update(n);
+                if (nnn1 != false) { Manage<CEO_log, CEO_logRepository>.Add(nn); }
+                return nnn1;
+            }
+            var result =  Manage<CEO, CEORepository>.Update(n);
             if(result!=false)
             {
                 var check = false;
-                return check= Manage<CEO_log, CEO_logRepository>.Add(CE);            
+                return check= Manage<CEO_log, CEO_logRepository>.Add(nn);            
             }
 
             return result;

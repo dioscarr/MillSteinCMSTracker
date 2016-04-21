@@ -82,27 +82,25 @@ namespace BLL
                 Order = n.Order,
                 NoteWriter = n.NoteWriter,
                 NoteWriterTitle = n.NoteWriterTitle,
-                Modified = DateTime.Now.Date,
+                Modified = DateTime.Now,
                 Created = n.Created,
                 isDeleted = n.isDeleted,
             };
             if (nn.isDeleted == true)
             {
                 nn.Type = "Deleted";
-                //save to database
-                Manage<Team_log, Team_logRepository>.Add(nn);
-                n.Modified = DateTime.Now.Date;
-                var nnn = Manage<Team, TeamRepository>.Update(n);
-                if (nnn != null) { Manage<Team_log, Team_logRepository>.Add(nn); }
+                //save to database 
+                var nnn = Manage<Team, TeamRepository>.Update(n); 
+                if (nnn != false) { Manage<Team_log, Team_logRepository>.Add(nn); }
                 return nnn;
             }
             else
             {
                 //save to database
                
-                n.Modified = DateTime.Now.Date;
+                n.Modified = DateTime.Now;
                 var nnn = Manage<Team, TeamRepository>.Update(n);
-                if (nnn != null) { Manage<Team_log, Team_logRepository>.Add(nn); }
+                if (nnn != false) { Manage<Team_log, Team_logRepository>.Add(nn); }
                 return nnn;
             }
            

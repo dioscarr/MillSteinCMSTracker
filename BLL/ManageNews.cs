@@ -30,8 +30,8 @@ namespace BLL
         #region Insert Methods -- AddNews
         public static bool AddNews(News n)
         {
-            n.Created = DateTime.Now.Date;
-            n.Modified = DateTime.Now.Date;
+            n.Created = DateTime.Now;
+            n.Modified = DateTime.Now;
 
             News_log newslog = new News_log()
             {
@@ -60,7 +60,7 @@ namespace BLL
         #region Update Methods -- UpdateNews
         public static bool UpdateNews(News n)
         {
-            n.Modified = DateTime.Now.Date;
+            n.Modified = DateTime.Now;
 
             News_log nn = new News_log()
             {
@@ -73,7 +73,19 @@ namespace BLL
                 NewsTitle = n.NewsTitle,
                 Type = "Update"
 
-            };          
+            };
+
+
+            if (nn.isDeleted == true)
+            {
+                nn.Type = "Deleted";
+                //save to database  
+                var nnn1 = Manage<News, NewsRepository>.Update(n);             
+              
+                if (nnn1 != false) { Manage<News_log, News_logRepository>.Add(nn); }
+                return nnn1;
+            }
+
             var nnn = Manage<News, NewsRepository>.Update(n);
             if (nnn != false)
             {

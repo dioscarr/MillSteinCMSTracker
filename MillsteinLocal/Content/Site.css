@@ -868,3 +868,8 @@ margin-bottom:20px;
   background-repeat: repeat-x;
 }
 
+
+.childHome, .ceo, .childAdvisory, .childAssetmanagement, .parentAdvisorychild, .childNews, .childContact, .childCareers {
+padding:7px
+}
+

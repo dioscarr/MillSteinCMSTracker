@@ -75,12 +75,13 @@ namespace BLL
         #region Update Methods -- UpdateContact
         public static bool UpdateContact(Contact n)
         {
-            Contact_log c = new Contact_log()
+            n.Modified = DateTime.Now;
+            Contact_log nn = new Contact_log()
             {
                 CareersEmail = n.CareersEmail,
                 CareersHeader = n.CareersHeader,
                 ContentHeader = n.ContentHeader,
-                Created = DateTime.Now.Date,
+                Created = DateTime.Now,
                 Email = n.Email,
                 FirstName = n.FirstName,
                 isDeleted = n.isDeleted,
@@ -89,12 +90,23 @@ namespace BLL
                 Modified = n.Modified,
                 Type = "Update"
             };
-             
-            n.Modified = DateTime.Now.Date;
+
+            if (nn.isDeleted == true)
+            {
+                nn.Type = "Deleted";
+                //save to database
+                Manage<Contact_log, Contact_logRepository>.Add(nn);
+                n.Modified = DateTime.Now;
+                var nnn1 = Manage<Contact, ContactRepository>.Update(n);
+                if (nnn1 != false) { Manage<Contact_log, Contact_logRepository>.Add(nn); }
+                return nnn1;
+            }
+
+           
             var result = Manage<Contact, ContactRepository>.Update(n);
             if(result!=false)
             {
-               Manage<Contact_log, Contact_logRepository>.Add(c);
+               Manage<Contact_log, Contact_logRepository>.Add(nn);
                 return result;
             }
 

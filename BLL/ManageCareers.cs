@@ -65,7 +65,7 @@ namespace BLL
         {
             //Home Page Log Update
 
-            n.Modified = DateTime.Now.Date;
+            n.Modified = DateTime.Now;
             Careers_log nn = new Careers_log()
             {
                 Content1 = n.Content1,

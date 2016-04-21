@@ -63,9 +63,9 @@ namespace BLL
         public static bool UpdateFirm(Firm n)
         {
 
-            n.Modified = DateTime.Now.Date;
+            n.Modified = DateTime.Now;
 
-            Firm_log f = new Firm_log()
+            Firm_log nn = new Firm_log()
             {
                 Content = n.Content,
                 Created = n.Created,
@@ -77,11 +77,22 @@ namespace BLL
                 Type = "Update"
 
             };
-           var result =  Manage<Firm, FirmRepository>.Update(n);
+
+            if (nn.isDeleted == true)
+            {
+                nn.Type = "Deleted";
+                //save to database
+                Manage<Firm_log, Firm_logRepository>.Add(nn);
+                n.Modified = DateTime.Now;
+                var nnn1 = Manage<Firm, FirmRepository>.Update(n);
+                if (nnn1 != false) { Manage<Firm_log, Firm_logRepository>.Add(nn); }
+                return nnn1;
+            }
+            var result =  Manage<Firm, FirmRepository>.Update(n);
 
            if (result != false)
            {
-               Manage<Firm_log, Firm_logRepository>.Add(f);
+               Manage<Firm_log, Firm_logRepository>.Add(nn);
            
            }
            return result;

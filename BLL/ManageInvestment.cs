@@ -49,14 +49,14 @@ namespace BLL
         public static bool UpdateInvestment(Investment n)
         {
 
-            n.Modified = DateTime.Now.Date;
+            n.Modified = DateTime.Now;
 
-            Investment_log i = new Investment_log()
+            Investment_log nn = new Investment_log()
             {
                 Content2 = n.Content1,
                 ContentTitle1 = n.ContentTitle1,
                 ContentTitle2 = n.ContentTitle2,
-                Created = DateTime.Now.Date,
+                Created = DateTime.Now,
                 HeaderContent = n.HeaderContent,
                 isDeleted = n.isDeleted,
                 Modified = n.Modified,
@@ -66,10 +66,21 @@ namespace BLL
 
             };
 
+            if (nn.isDeleted == true)
+            {
+                nn.Type = "Deleted";
+                //save to database
+                Manage<Investment_log, Investment_logRepository>.Add(nn);
+                n.Modified = DateTime.Now;
+                var nnn1 = Manage<Investment, InvestmentRepository>.Update(n);
+                if (nnn1 != false) { Manage<Investment_log, Investment_logRepository>.Add(nn); }
+                return nnn1;
+            }
+
             var result = Manage<Investment, InvestmentRepository>.Update(n);
             if (result != false)
             {
-                Manage<Investment_log, Investment_logRepository>.Add(i);
+                Manage<Investment_log, Investment_logRepository>.Add(nn);
             }
 
             return result;

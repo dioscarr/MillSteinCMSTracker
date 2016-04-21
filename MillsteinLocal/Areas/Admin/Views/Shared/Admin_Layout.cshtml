@@ -5,7 +5,7 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>@ViewBag.Title - MillsteinLocal & Co.</title>
+    <title>@ViewBag.Title - Millstein & Co.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <!-- Css Styles -->
@@ -51,8 +51,8 @@
                         <li role="presentation"><a class="@ViewBag.NewsActive" href="~/Admin/AdminNews/Index">NEWS</a></li>
                         <li role="presentation"><a class="@ViewBag.ContactActive" href="~/Admin/Admincontact/index">CONTACT</a></li>
                        
-                        <li role="presentation"><a class="@ViewBag.ContactActive" href="~/Admin/Admincareers/index">Careers</a></li>
-                        <li role="presentation"><a class="@ViewBag.ContactActive" href="~/Admin/Log/index">Log</a></li>
+                        <li role="presentation"><a class="" href="~/Admin/Admincareers/index">CAREERS</a></li>
+                        <li role="presentation"><a class="" href="~/Admin/Log/index">LOG</a></li>
 
                     </ul>
                     @Html.Partial("_LoginPartial")
@@ -68,5 +68,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+        <script src="https://cdn.jsdelivr.net/ckeditor/4.3.1/ckeditor.js"></script>
 </body>
 </html>

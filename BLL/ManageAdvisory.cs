@@ -33,8 +33,8 @@ namespace BLL
         #region Insert Methods -- AddAdvisory
         public static bool AddAdvisory(Advisory n)
         {
-            n.Created = DateTime.Now.Date;
-            n.Modified = DateTime.Now.Date;
+            n.Created = DateTime.Now;
+            n.Modified = DateTime.Now;
 
             Advisory_log a = new Advisory_log()
             {
@@ -65,7 +65,7 @@ namespace BLL
         public static bool UpdateAdvisory(Advisory n)
         {
 
-            n.Modified = DateTime.Now.Date;
+            n.Modified = DateTime.Now;
 
             Advisory_log a = new Advisory_log()
             {
